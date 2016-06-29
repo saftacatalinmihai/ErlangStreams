@@ -14,10 +14,10 @@ integers_test() ->
   Integers =  stream:integers(),
   ?assertEqual(lists:seq(1,99), stream:take(99,Integers)),
 
-  OddIntegers = stream:filter(fun(X) -> X rem 2 =:= 0 end, Integers),
+  EvenIntegers = stream:filter(fun(X) -> X rem 2 =:= 0 end, Integers),
   ?assertEqual(
     lists:filter(fun(X) -> X rem 2 =:= 0 end, lists:seq(1,99)),
-    stream:takeWhile( fun (X)-> X =< 99 end, OddIntegers)
+    stream:takeWhile( fun (X)-> X =< 99 end, EvenIntegers)
   ),
 
   SquareIntegers = stream:map(fun (X) -> X * X end, Integers),
