@@ -18,6 +18,12 @@ integers_test() ->
   ?assertEqual(
     lists:filter(fun(X) -> X rem 2 =:= 0 end, lists:seq(1,99)),
     stream:take(49,OddIntegers)
+  ),
+
+  SquareIntegers = stream:map(fun (X) -> X * X end, Integers),
+  ?assertEqual(
+    lists:map(fun (X) -> X * X end, lists:seq(1,99)),
+    stream:take(99, SquareIntegers)
   ).
 
 
